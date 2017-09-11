@@ -1,7 +1,0 @@
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\bin\Debug\ex_1-2.exe.config
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\bin\Debug\ex_1-2.exe
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\bin\Debug\ex_1-2.pdb
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\obj\Debug\ex_1-2.csprojResolveAssemblyReference.cache
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\obj\Debug\ex_1-2.csproj.CoreCompileInputs.cache
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\obj\Debug\ex_1-2.exe
-E:\Скворцов_Александр_11_708\2017\fall\sem\ex_1-2\ex_1-2\obj\Debug\ex_1-2.pdb
