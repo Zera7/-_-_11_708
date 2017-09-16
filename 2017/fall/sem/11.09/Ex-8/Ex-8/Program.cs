@@ -34,21 +34,28 @@ namespace Ex_8
                 double input4 = Convert.ToDouble(Console.ReadLine());
                 double input5 = Convert.ToDouble(Console.ReadLine());
 
-                double T = input1 / input2;
-
-                double y = (-input3 - input2 * input4 * T + input1 * input5 * T) / (input1 * T + input2);
-                double x = 0;
                 if (input1 == 0 && input2 == 0)
                 {
                     Console.WriteLine("#Коэффициенты уравнения а и b не могут быть равны нулю одновременно");
                 }
+                else if (input2 == 0)
+                {
+                    Console.WriteLine("RESULT: (" + -input3 / input1 + ", " + input5 + ")");
+                }
+                else if (input1 == 0)
+                {
+                    Console.WriteLine("RESULT: (" + input4 + ", " + -input3 / input2 + ")");
+                }
                 else
-                x = input1 != 0? (-input2 * y - input3) / input1 : (input1 * y + input2 * input4 - input1 * input5) / input2;
+                {
+                    double y = (input1 * input1 * input5 - input1 * input2 * input4 - input2 * input3) / (input1 * input1 + input2 * input2);
+                    double x = -(input2 * y + input3) / input1;
+                    Console.WriteLine("RESULT: (" + x + ", " + y + ")");
+                }
 
 
-
-                //Вывод результата и конец цикла
-                Console.WriteLine("RESULT: (" + x + ", " + y + ")\n\n");
+                //Конец цикла
+                Console.WriteLine("\n");
                 Console.WriteLine("#Любой символ для завершения");
                 end = Console.ReadLine();
             } while (end == "" || end.Length > 1);
