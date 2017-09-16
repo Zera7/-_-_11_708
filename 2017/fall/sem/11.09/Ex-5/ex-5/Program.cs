@@ -11,6 +11,7 @@ namespace ex_5
         static void Main(string[] args)
         {
             string end = "";
+            //Начало цикла
             do {
                 Console.WriteLine("START");
 
@@ -25,6 +26,8 @@ namespace ex_5
 
                 result = (input1 % 4 == 0 && input2 % 4 == 0) ? result + 1 : result;
                 result = input1 == 0 ? result - 1 : result;
+
+                //Конец цикла и вывод результатов
 
                 Console.WriteLine("RESULT: "+result+"\n\n");
                 Console.WriteLine("#Любой символ для завершения");

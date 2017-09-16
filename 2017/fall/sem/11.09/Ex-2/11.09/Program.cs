@@ -22,9 +22,8 @@ namespace _11._09
 
                 Console.WriteLine("Введено: " + a + ", получено: " + b);
 
-
+                Console.WriteLine("\n\nВведите любой символ для завершения");
                 end = Console.ReadLine();
-                Console.WriteLine("\n\n Введите любой символ для завершения");
             } while (end =="");
         }
     }
