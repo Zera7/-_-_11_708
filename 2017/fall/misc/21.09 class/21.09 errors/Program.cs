@@ -17,9 +17,12 @@ namespace RefactorMe
 
     class Risovatel
     {
+        public static int iteration = 0;
         static Bitmap image = new Bitmap(800, 600);
         static float x, y;
         static Graphics graphics;
+        static public int width = 20;
+        static public int a = 170;
 
         public static void Initialize()
         {
@@ -27,10 +30,11 @@ namespace RefactorMe
             graphics = Graphics.FromImage(image);
         }
 
-        public static void set_pos(float x0, float y0)
+        public static void SetPos(float x0, float y0)
         {
             x = x0;
             y = y0;
+            DoIt(width, a);
         }
 
         public static void Go(double L, double angle)
@@ -49,44 +53,35 @@ namespace RefactorMe
             image.Save("result.bmp");
             Process.Start("result.bmp");
         }
+
+        public static void DoIt(double width, double a) {
+            Go(a, Math.PI / 2 * iteration);
+            Go(width * Math.Sqrt(2), Math.PI / 4 + Math.PI / 2 * iteration);
+            Go(a, Math.PI + Math.PI / 2 * iteration);
+            Go(a - (double)width, Math.PI / 2 * (iteration + 1));
+            iteration++;
+        }
     }
 
     public class StrangeThing
     {
+
         public static void Main()
         {
             Risovatel.Initialize();
-            int width = 20;
-            int a = 170;
 
             //Рисуем четыре одинаковые части невозможного квадрата.
             // Часть первая:
-            Risovatel.set_pos(width, 0);
-            Risovatel.Go(a, 0);
-            Risovatel.Go(width * Math.Sqrt(2), Math.PI / 4);
-            Risovatel.Go(a, Math.PI);
-            Risovatel.Go(a - (double)width, Math.PI / 2);
+            Risovatel.SetPos(Risovatel.width, 0);
 
             // Часть вторая:
-            Risovatel.set_pos(a + 2 * width, width);
-            Risovatel.Go(a, Math.PI / 2);
-            Risovatel.Go(width * Math.Sqrt(2), Math.PI / 2 + Math.PI / 4);
-            Risovatel.Go(a, Math.PI / 2 + Math.PI);
-            Risovatel.Go(a - (double)width, Math.PI / 2 + Math.PI / 2);
+            Risovatel.SetPos(Risovatel.a + 2 * Risovatel.width, Risovatel.width);
 
             // Часть третья:
-            Risovatel.set_pos(a + width, a + width * 2);
-            Risovatel.Go(a, Math.PI);
-            Risovatel.Go(width * Math.Sqrt(2), Math.PI + Math.PI / 4);
-            Risovatel.Go(a, Math.PI + Math.PI);
-            Risovatel.Go(a - (double)width, Math.PI + Math.PI / 2);
+            Risovatel.SetPos(Risovatel.a + Risovatel.width, Risovatel.a + Risovatel.width * 2);
 
             // Часть четвертая:
-            Risovatel.set_pos(0, a + width);
-            Risovatel.Go(a, -Math.PI / 2);
-            Risovatel.Go(width * Math.Sqrt(2), -Math.PI / 2 + Math.PI / 4);
-            Risovatel.Go(a, -Math.PI / 2 + Math.PI);
-            Risovatel.Go(a - (double)width, -Math.PI / 2 + Math.PI / 2);
+            Risovatel.SetPos(0, Risovatel.a + Risovatel.width);
 
             Risovatel.ShowResult();
         }
