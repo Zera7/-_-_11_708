@@ -21,7 +21,7 @@ namespace Ex_10_13
         static void Main(string[] args)
         {
             Console.WriteLine("START");
-            Expr12();
+            Expr10();
             Console.ReadLine();
         }
         //1
