@@ -23,19 +23,20 @@ namespace ex_1_4
             do
             {
                 Console.WriteLine("START \n#Введите числа по одному, программа посчитает максимальную последовательность четных чисел");
-                int answer = 0;
+                int result = 0;
                 int number = 0;
                 int input = 0;
 
                 //Цикл ввода
-                do {
+                do
+                {
                     input = Convert.ToInt32(Console.ReadLine());
                     number = input % 2 == 0 && input != 0 ? number + 1 : 0;
-                    answer = number>answer? number : answer;
-                } while (input!=0);
+                    result = number > result ? number : result;
+                } while (input != 0);
 
                 //Вывод результата, выбор продолжить/завершить
-                Console.WriteLine("ANSWER: " + answer + "\n#Введите что-нибудь чтобы прекратить выполнение программы");
+                Console.WriteLine("RESULT: " + result + "\n#Введите что-нибудь чтобы прекратить выполнение программы");
                 end = Console.ReadLine();
             } while (end == "");
         }

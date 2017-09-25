@@ -23,25 +23,25 @@ namespace ex_1_2
             {
                 Console.WriteLine("START \n#Введите 2 первых числа, а так же количество чисел в прогрессии");
                 //Ввод первых двух чисел арифметической прогрессии
-                int a1 = Convert.ToInt32(Console.ReadLine());
-                int a2 = Convert.ToInt32(Console.ReadLine());
+                int number1 = Convert.ToInt32(Console.ReadLine());
+                int number2 = Convert.ToInt32(Console.ReadLine());
 
                 //Ввод числа членов прогрессии
-                int n = Convert.ToInt32(Console.ReadLine());
+                int AmountOfNumbers = Convert.ToInt32(Console.ReadLine());
 
                 //Разница между 1 и 2
-                int dif = a2 - a1;
+                int step = number2 - number1;
 
                 //Расчет суммы до n
-                int answer = 0;
+                int result = 0;
 
-                for (int i = 0; i < n; i++)
+                for (int i = 0; i < AmountOfNumbers; i++)
                 {
-                    answer += a1 + dif * i;
+                    result += number1 + step * i;
                 }
 
                 //Вывод результата, выбор продолжить/завершить
-                Console.WriteLine("ANSWER: "+answer + "\n#Введите что-нибудь чтобы прекратить выполнение программы");
+                Console.WriteLine("RESULT: "+result + "\n#Введите что-нибудь чтобы прекратить выполнение программы");
                 end = Console.ReadLine();
             } while (end == "");
 

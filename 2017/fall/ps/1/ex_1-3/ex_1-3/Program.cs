@@ -23,13 +23,13 @@ namespace ex_1_3
             {
                 Console.WriteLine("START");
 
-                int input1 = Convert.ToInt32(Console.ReadLine());
+                int number = Convert.ToInt32(Console.ReadLine());
 
                 Console.Write("RESULT: ");
                 for (int i = 0; i < 32; i++)
                 {
                     //Вывод результата
-                    Console.Write((input1 & (1 << i)) >> i);
+                    Console.Write((number & (1 << i)) >> i);
                 }
                 Console.WriteLine("\n");
 

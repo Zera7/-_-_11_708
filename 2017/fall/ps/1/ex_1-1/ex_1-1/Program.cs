@@ -16,7 +16,7 @@ namespace ex_1_1
 {
     class Program
     {
-        const int input1_length = 4;
+        const int InputLength = 4;
 
         static void Main(string[] args)
         {
@@ -31,8 +31,8 @@ namespace ex_1_1
 
                 int result = 0;
 
-                for (int i = 0; i < input1_length - 1; i++) {
-                    int answer = get_cowNumber(get_number(input1, i), input2);
+                for (int i = 0; i < InputLength - 1; i++) {
+                    int answer = GetCowNumber(GetNumber(input1, i), input2);
                     if (answer == -1 || answer == i) { }
                     else result++;
                 }
@@ -48,17 +48,17 @@ namespace ex_1_1
         //Определяет цифру в числе по порядковому номеру
         //Принимает число и порядковый номер
         //Возврашает цифру
-        static int get_number(int input1, int number) {
-            number = input1_length - number;
+        static int GetNumber(int input1, int number) {
+            number = InputLength - number;
             return (input1 % (int)(Math.Pow(10, number)) / (int)Math.Pow(10, number - 1));
         }
 
         //Проверка на наличие цифры на роль коровы из другого числа
         //Принимает проверяемую цифру и число в котором выполняется проверка
         //Возвращает порядковый номер числа при совподении, если совпадений не найдено, возвращает -1
-        static int get_cowNumber(int number, int input2) {
-            for (int i = 0; i < input1_length; i++){
-                if (number == get_number(input2, i)) return i;
+        static int GetCowNumber(int number, int input2) {
+            for (int i = 0; i < InputLength; i++){
+                if (number == GetNumber(input2, i)) return i;
             }
             return -1;
         }

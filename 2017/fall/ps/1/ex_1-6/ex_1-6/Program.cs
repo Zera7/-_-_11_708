@@ -26,36 +26,34 @@ namespace ex_1_6
             {
                 Console.WriteLine("START \n#Введите число, программа посчитает максимальную последовательность чисел, чья сумма будет равна введенному");
 
-                int answer = 0;
-                int n = Convert.ToInt32(Console.ReadLine());
-                string text = "";
-                string text2 = "";
+                int amountOfNumbers = 0;
+                int number = Convert.ToInt32(Console.ReadLine());
+                string bufferSequence = "";
+                string sequence = "";
 
                 //Цикл вычисления последовательности
-                for (int i = 1; i < n; i++) {
+                for (int i = 1; i < number; i++) {
                     int count = 0;
-                    text = "";
-                    for (int j = i; j < n; j++) {
+                    bufferSequence = "";
+                    for (int j = i; j < number; j++) {
                         count += j;
-                        text += j + " ";
-                        if (count > n) break;
-                        if (count == n) {
-                            if (answer > j - i + 1)
+                        bufferSequence += j + " ";
+                        if (count > number) break;
+                        if (count == number) {
+                            if (amountOfNumbers <= j - i + 1) 
                             {
-                            }
-                            else 
-                            {
-                                answer = j - i + 1;
-                                text2 = text;
+                                amountOfNumbers = j - i + 1;
+                                sequence = bufferSequence;
                             }
                             break;
                         }
-                        if (answer > count) break;
+                        if (amountOfNumbers > count) break;
                     }
                 }
 
                 //Вывод результата, выбор продолжить/завершить
-                Console.WriteLine("ANSWER: " + "( " + text2 + ") = " + n + " (" + answer + " чисел)" + "\n#Введите что-нибудь чтобы прекратить выполнение программы");
+                Console.WriteLine("RESULT: ( {0}) = {1} ({2} чисел)",sequence, number, amountOfNumbers);
+                Console.WriteLine("Введите что-нибудь чтобы прекратить выполнение программы");
                 end = Console.ReadLine();
             } while (end == "");
         }
