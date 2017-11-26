@@ -21,6 +21,8 @@ namespace Kramer
                 error = false;
                 Console.WriteLine("START");
 
+                DateTime beginTest = DateTime.Now;
+
                 if (!error) input_matrix();
 
                 Console.WriteLine("\nRESULT:");
@@ -37,6 +39,7 @@ namespace Kramer
                         }
                     }
                 //Вывод результата и конец цикла
+                Console.WriteLine("\n\nВремя теста: " + (DateTime.Now - beginTest));
                 Console.WriteLine("\n\n");
                 Console.WriteLine("#Any character to complete");
                 end = Console.ReadLine();
