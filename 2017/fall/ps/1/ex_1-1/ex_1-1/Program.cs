@@ -33,6 +33,8 @@ namespace ex_1_1
 
                 for (int i = 0; i < InputLength - 1; i++) {
                     int answer = GetCowNumber(GetNumber(input1, i), input2);
+		    // ---check--- зачем такие конструкции { }?
+		    // if (answer != -1 && answer != i) result++;
                     if (answer == -1 || answer == i) { }
                     else result++;
                 }

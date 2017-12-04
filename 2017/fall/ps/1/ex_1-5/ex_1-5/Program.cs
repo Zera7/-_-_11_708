@@ -47,6 +47,7 @@ namespace ex_1_5
         //Определяет цифру в числе по порядковому номеру
         //Принимает число и порядковый номер
         //Возврашает цифру
+	// ---check--- плохое название методов
         static int get_number(int input1, int number)
         {
             number = input1_length - number;

@@ -35,6 +35,7 @@ namespace ex_1_2
                 //Расчет суммы до n
                 int result = 0;
 
+		// ---check--- а почему не по формуле суммы?
                 for (int i = 0; i < AmountOfNumbers; i++)
                 {
                     result += number1 + step * i;
