@@ -1,0 +1,2 @@
+C:\Users\Rustem\Dropbox\univer\lekcii\C# - ITIS\2017\students\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Ex-4\bin\Debug\Ex-4.exe.config
+C:\Users\Rustem\Dropbox\univer\lekcii\C# - ITIS\2017\students\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Ex-4\obj\Debug\Ex-4.csprojResolveAssemblyReference.cache

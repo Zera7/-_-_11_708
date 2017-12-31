@@ -20,6 +20,7 @@ namespace solver
 
             for (i = 0; !end; i++)
             {
+				//---check--- надо было не пересчитывать всё с начала, а считать относительно предыдущего результата
                 result[0] += (2 * i * x + 1) / (Math.Pow(x, 2 * i) * Fact(2 * i));
                 end = Math.Abs(result[0] - oldResult) < k;
                 oldResult = result[0];
@@ -47,6 +48,7 @@ namespace solver
 
             for (i = 0; !end; i++)
             {
+				//---check--- надо было не пересчитывать всё с начала, а считать относительно предыдущего результата
                 result[0] += ((i % 2 == 0 ? 1 : -1) * Fact(2 * i, i + 1, 4 / x, i)) /
                     (1 - 2 * i);
                 end = Math.Abs(result[0] - oldResult) < k;
@@ -67,6 +69,7 @@ namespace solver
 
             for (i = 1; !end; i++)
             {
+				//---check--- надо было не пересчитывать всё с начала, а считать относительно предыдущего результата
                 result[0] += Math.Abs(Fact(i - 1)) / Fact(2 * i, i);
                 end = Math.Abs(result[0] - oldResult) < k;
                 oldResult = result[0];
