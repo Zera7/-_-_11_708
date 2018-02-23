@@ -1,0 +1,6 @@
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\bin\Debug\Solver.dll
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\bin\Debug\Solver.pdb
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\obj\Debug\Solver.csproj.CoreCompileInputs.cache
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\obj\Debug\Solver.dll
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\obj\Debug\Solver.pdb
+E:\Proger\Skvortsov_Alexander_11_708\2017\fall\ps\2\Ex-4\Solver\obj\Debug\Solver.csprojResolveAssemblyReference.cache
