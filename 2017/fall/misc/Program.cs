@@ -4,79 +4,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StringSort
+/*
+Александр Скворцов
+
+    Вычисление ряда Фарея
+*/
+
+namespace FareySequence
 {
     class Program
     {
+        struct Fraction
+        {
+            public int Numerator { get; set; }
+            public int Denominator { get; set; }
+
+            public Fraction(int numerator, int denominator)
+            {
+                this.Numerator = numerator;
+                this.Denominator = denominator;
+            }
+
+            // Override ToString function
+            public override string ToString()
+            {
+                return Numerator.ToString() + " / " + Denominator.ToString();
+            }
+
+            // Overload of the addition operator for fractions
+            public static Fraction operator +(Fraction a, Fraction b)
+            {
+                return new Fraction(a.Numerator + b.Numerator, a.Denominator + b.Denominator);
+            }
+        }
+
         static void Main(string[] args)
         {
-            string[] a = { "das", "as", "w", "a", "zxc", "dfsgsf" };
-            // ref использовать не хорошо
-            // но иногда можно
-            StringSort(ref a, 32, 'a');
-            foreach (var item in a)
+            // The first and last element of the sequence
+            List<Fraction> fractions = new List<Fraction>
             {
-                Console.WriteLine(item);
-            }
-            Console.Read();
-        }
+                new Fraction(0, 1),
+                new Fraction(1, 1)
+            };
 
-        public static string[] StringSort(ref string[] arr, int cardinality, char firstLetter)
-        {
-            StringLengthSort(arr);
-            int maxIndex = arr[arr.Length - 1].Length - 1;
-            int difference = 0;
-            int counter = 0;
+            // Maximum denominator input
+            int maxDenominator = 1;
+            while (!int.TryParse(Console.ReadLine(), out maxDenominator)) ;
 
-            Stack<string>[] buffer = new Stack<string>[cardinality + 1];
-            for (int i = 0; i < buffer.Length; i++)
-                buffer[i] = new Stack<string>();
-            List<string> result = arr.Cast<string>().ToList();
-
-            while (maxIndex >= 0)
+            // Computation of a sequence
+            int i;
+            Fraction newFraction;
+            do
             {
-                for (int i = arr.Length - 1; i >= 0; i--)
+                i = 0;
+                for (int j = fractions.Count - 2; j >= 0 ; j--)
                 {
-                    if (result[i].Length < maxIndex + 1)
+                    newFraction = fractions[j] + fractions[j + 1];
+                    if (newFraction.Denominator <= maxDenominator)
                     {
-                        maxIndex = result[i].Length - 1;
-                        break;
+                        fractions.Insert(j + 1, newFraction);
+                        i++;
                     }
-
-                    difference = result[i][maxIndex] - firstLetter;
-                    if (difference >= cardinality)
-                        buffer[cardinality - 1].Push(result[i]);
-                    else
-                        buffer[difference].Push(result[i]);
-                    counter++;
-                    if (i == 0) maxIndex--;
                 }
-                result.RemoveRange(arr.Length - counter, counter);
-                counter = 0;
-                for (int j = 0; j < buffer.Length; j++)
-                    if (buffer[j].Count > 0)
-                    {
-                        result.AddRange(buffer[j]);
-                        buffer[j].Clear();
-                    }
-            }
-            return arr = result.ToArray();
-        }
+            } while (i != 0);
 
-        // Функция сортировки массива слов по их длине
-        private static void StringLengthSort(string[] arr)
-        {
-            string buffer;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                for (int j = 0; j < arr.Length - i - 1; j++)
-                    if (arr[j].Length > arr[j + 1].Length)
-                    {
-                        buffer = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = buffer;
-                    }
-            }
+            ////////////////////////
+            // Test
+            foreach (var item in fractions)
+                Console.WriteLine(item);
+            Console.Read();
+            ////////////////////////
         }
     }
 }
+// Need more comments
