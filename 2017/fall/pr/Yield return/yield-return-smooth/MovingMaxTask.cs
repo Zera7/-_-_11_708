@@ -16,29 +16,38 @@ namespace yield
             foreach (var item in data)
             {
                 // Remove smaller elements
-                while (items.Count > 0 && item.OriginalY >= items.Last.Value.OriginalY)
-                {
-                    deletedItems.Enqueue(items.Last.Value);
-                    items.RemoveLast();
-                    amountDeletedElements++;
-                }
+                amountDeletedElements = RemoveSmallerElements(items, deletedItems, amountDeletedElements, item);
                 // Add new item
                 items.AddLast(item);
-                amountPoints++;
-                // Remove old items
-                if (amountPoints > windowWidth)
-                {
-                    amountPoints--;
-                    if (amountDeletedElements > 0 && deletedItems.Peek().X < items.First.Value.X)
-                    {
-                        deletedItems.Dequeue();
-                        amountDeletedElements--;
-                    }
-                    else items.RemoveFirst();
-                }
+                if (amountPoints < windowWidth)
+                    amountPoints++;
+                else
+                    RemoveOldItems(items, deletedItems, ref amountDeletedElements);
                 item.MaxY = items.First.Value.OriginalY;
                 yield return item;
             }
+        }
+
+        private static int RemoveSmallerElements(LinkedList<DataPoint> items, Queue<DataPoint> deletedItems, int amountDeletedElements, DataPoint item)
+        {
+            while (items.Count > 0 && item.OriginalY >= items.Last.Value.OriginalY)
+            {
+                deletedItems.Enqueue(items.Last.Value);
+                items.RemoveLast();
+                amountDeletedElements++;
+            }
+
+            return amountDeletedElements;
+        }
+
+        private static void RemoveOldItems(LinkedList<DataPoint> items, Queue<DataPoint> deletedItems, ref int amountDeletedElements)
+        {
+            if (amountDeletedElements > 0 && deletedItems.Peek().X < items.First.Value.X)
+            {
+                deletedItems.Dequeue();
+                amountDeletedElements--;
+            }
+            else items.RemoveFirst();
         }
     }
 }
