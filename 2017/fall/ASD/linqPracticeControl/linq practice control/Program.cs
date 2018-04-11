@@ -10,7 +10,7 @@ namespace linq_practice_control
     {
         static void Main(string[] args)
         {
-            Tasks709.Test();
+            Task2_1.Test();
 
             Console.Read();
         }

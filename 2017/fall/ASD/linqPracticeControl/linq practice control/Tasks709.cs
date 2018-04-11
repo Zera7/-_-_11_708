@@ -42,4 +42,38 @@ namespace linq_practice_control
                 .Sum(a => 1 / (double)a);
         }
     }
+
+    public static class Task2_1
+    {
+        public class Abi
+        {
+            public int SchoolNumber { get; set; }
+            public int Year { get; set; }
+            public int Lastname { get; set; }
+        }
+
+        public static void Test()
+        {
+            List<Abi> a = new List<Abi> {
+                new Abi{ SchoolNumber= 3, Year = 1234 },
+                new Abi{ SchoolNumber= 1, Year = 1233 },
+                new Abi{ SchoolNumber= 3, Year = 1234 },
+                new Abi{ SchoolNumber= 3, Year = 1234 },
+                new Abi{ SchoolNumber= 2, Year = 1231 },
+            };
+
+            var groupA = a
+                .GroupBy(q => q.Year)
+                .OrderBy(q => q.Count())
+                .Select(q => new { Year = q.Key, AmountSchools = q.Count() });
+
+            foreach (var item in groupA)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+
+    }
 }
