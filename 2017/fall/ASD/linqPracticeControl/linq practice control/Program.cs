@@ -29,8 +29,8 @@ namespace linq_practice_control
                 .Take(1)
                 .Select(q => q % 10)
                 .Concat(
-                    a.Skip(1)
-                    .Where(q => q > 0)
+                    a.Where(q => q > 0)
+                    .Skip(1)
                     .Select(q => q % 10)
                     .Distinct()
                 );

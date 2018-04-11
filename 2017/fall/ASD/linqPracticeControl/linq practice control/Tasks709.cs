@@ -11,9 +11,8 @@ namespace linq_practice_control
         public static void Test()
         {
             int[] asd = {1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            var result = Task1(asd, 5);
-            foreach (var item in result)
-                Console.WriteLine(item);
+            var result = Task5(2);
+                Console.WriteLine(result);
         }
 
         public static IEnumerable<int> Task1(IEnumerable<int> a, int k)
@@ -34,6 +33,13 @@ namespace linq_practice_control
             return a
                 .Where(q => q % 2 == 1)
                 .Distinct();
+        }
+
+        public static double Task5(int k)
+        {
+            return Enumerable
+                .Range(1, k)
+                .Sum(a => 1 / (double)a);
         }
     }
 }
