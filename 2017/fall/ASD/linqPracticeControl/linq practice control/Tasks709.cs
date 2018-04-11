@@ -15,7 +15,7 @@ namespace linq_practice_control
                 Console.WriteLine(result);
         }
 
-        public static IEnumerable<int> Task1(IEnumerable<int> a, int k)
+        public static IEnumerable<string> Task1(IEnumerable<string> a, int k)
         {
             return a
                 .Where((q, w) => (w < k && w % 2 == 1) || (w >= k && w % 2 == 0))
