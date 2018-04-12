@@ -19,9 +19,10 @@ namespace linq_practice_control
         {
             return a
                 .Where((q, w) => (w < k && w % 2 == 1) || (w >= k && w % 2 == 0))
+                .Where((X,i) => 
                 .Reverse();
         }
-
+        // where(
         public static IEnumerable<int> Task2(IEnumerable<int> a, IEnumerable<int> b)
         {
             return a
