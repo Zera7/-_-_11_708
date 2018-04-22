@@ -30,7 +30,7 @@ namespace Bombermans
 
         public override void Intersect(GameObject obj)
         {
-            if (obj.GetType().Name == ObjectType.Player.ToString())
+            if (obj.GetType().Name == StaticObjectType.Player.ToString())
             {
 
             }

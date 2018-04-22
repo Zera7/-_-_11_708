@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Bombermans
 {
-    public enum ObjectType
+    public enum StaticObjectType
     {
-        Player = 1,
         Wall,
         Sand,
+    }
+
+    public enum DynamicObjectType
+    {
+        Player,
+        Bonus,
         Fire,
-        Bonus
     }
 
     abstract class GameObject

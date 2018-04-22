@@ -31,7 +31,7 @@ namespace Bombermans
         private void Move(Coords newCoords)
         {
             var a = Map.Field[newCoords.X, newCoords.Y];
-            if (a == null || a.GetType().Name == ObjectType.Bonus.ToString())
+            if (a == null || a.GetType().Name == StaticObjectType.Bonus.ToString())
             Coords = newCoords;
         }
 

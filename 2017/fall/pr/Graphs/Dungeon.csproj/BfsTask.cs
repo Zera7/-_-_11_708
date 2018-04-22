@@ -7,25 +7,31 @@ using System.Threading.Tasks;
 
 namespace Dungeon
 {
-	public class BfsTask
-	{
-		public static IEnumerable<SinglyLinkedList<Point>> FindPaths(Map map, Point start, Point[] chests)
-		{
-            var queue = new Queue<Point>();
-            queue.Enqueue(start);
+    public class BfsTask
+    {
+        public static IEnumerable<SinglyLinkedList<Point>> FindPaths(Map map, Point start, Point[] chests)
+        {
+            var visited = new Dictionary<Point,SinglyLinkedList<Point>>();
+            var queue = new Queue<SinglyLinkedList<Point>>();
+            queue.Enqueue(new SinglyLinkedList<Point>(start));
             while (queue.Count != 0)
             {
-                var point = queue.Dequeue();
-                if (!map.InBounds(point)) continue;
-                if (map[point.X, point.Y] != MapCell.Empty) continue;
-                map[point.X, point.Y] = State.Visited;
-                Print(map);
-
-                for (var dy = -1; dy <= 1; dy++)
-                    for (var dx = -1; dx <= 1; dx++)
-                        if (dx != 0 && dy != 0) continue;
-                        else queue.Enqueue(new Point { X = point.X + dx, Y = point.Y + dy });
-
+                var currentWay = queue.Dequeue();
+                if (visited.ContainsKey(currentWay.Value)) continue;
+                visited[currentWay.Value] = (currentWay);
+                if (chests.Contains(currentWay.Value)) yield return currentWay;
+                for (int i = -1; i <= 1; i++)
+                    for (int j = -1; j <= 1; j++)
+                        if (i != j && (i == 0 || j == 0))
+                        {
+                            Point newPoint = new Point(currentWay.Value.X + j, currentWay.Value.Y + i);
+                            if (!map.InBounds(newPoint)) continue;
+                            if (map.Dungeon[newPoint.X, newPoint.Y] == MapCell.Empty)
+                                queue.Enqueue(new SinglyLinkedList<Point>(
+                                        new Point(newPoint.X, newPoint.Y),
+                                        currentWay));
+                        }
             }
         }
+    }
 }

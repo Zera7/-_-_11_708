@@ -37,16 +37,16 @@ namespace Bombermans
             {
                 case '0':
                     return null;
-                case (char)ObjectType.Bonus:
+                case (char)StaticObjectType.Bonus:
                     return new Bonus(new Coords(i, j));
-                case (char)ObjectType.Fire:
+                case (char)StaticObjectType.Fire:
                     return null;
-                case (char)ObjectType.Player:
+                case (char)StaticObjectType.Player:
                     // Дописать
                     return null;
-                case (char)ObjectType.Sand:
+                case (char)StaticObjectType.Sand:
                     return new Sand(new Coords(i, j));
-                case (char)ObjectType.Wall:
+                case (char)StaticObjectType.Wall:
                     return new Wall(new Coords(i, j));
                 default:
                     return null;
