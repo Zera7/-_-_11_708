@@ -1,0 +1,4 @@
+﻿receive_port 15000
+send_port 15001
+maps_path maps/
+max_lobby_index 2000
