@@ -9,6 +9,9 @@ public class Program
 {
     static void Main(string[] args)
     {
+        var a = new SkipList<int>();
+        a.Add(0);
+        a.Remove(1);
         Console.ReadKey();
     }
 }
@@ -114,6 +117,7 @@ public class SkipList<T> : IEnumerable<T> where T : IComparable
 
     public void Remove(T value)
     {
+        if (Count <= 0) return;
         Count--;
         var current = FirstNodes[MaxLvl];
         var currentLvl = MaxLvl;
