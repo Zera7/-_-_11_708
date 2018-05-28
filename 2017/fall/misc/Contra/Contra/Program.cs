@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace Contra
 {
-    //JsonConvert.SerializeObject(" ");
+    // Задание 2
     public class Comment
     {
         public int PostId { get; set; }
@@ -20,6 +20,7 @@ namespace Contra
         public string Body { get; set; }
     }
 
+    // Класс для хранения количества букв в нужном комментарии
     public class CountComment
     {
         public int Count { get; set; }
@@ -28,6 +29,7 @@ namespace Contra
 
     class Program
     {
+        // Очередь хранит количество букв в нужных комментариях
         public static Queue<CountComment> Numbers = new Queue<CountComment>();
 
         static void Main(string[] args)
@@ -39,26 +41,25 @@ namespace Contra
             JavaScriptSerializer json = new JavaScriptSerializer();
             var res = json.Deserialize(comments, typeof(List<Comment>));
 
-            //foreach (var item in (IList)res)
-            //    Console.WriteLine(((Comment)item).Email);
-
-            Parallel.ForEach(res as List<Comment>,AddCount);
+            // Асинхронно считает буквы
+            Parallel.ForEach(res as List<Comment>, AddCount);
 
             foreach (var item in Numbers)
-            {
                 Console.WriteLine(item.Count);
-            }
+
             Console.Read();
         }
 
+        // Считает количество букв в комментарии, сохраняет результат
         public static void AddCount(Comment comment)
         {
-            if (comment.Id % 2 != 0) return; 
-                int a = 0;
+            if (comment.Id % 2 != 0) return;
+            int a = 0;
             for (int i = 0; i < comment.Body.Length; i++)
                 if (char.IsLetter(comment.Body[i]))
                     a++;
-            Numbers.Enqueue(new CountComment {
+            Numbers.Enqueue(new CountComment
+            {
                 Count = a,
                 Id = comment.Id
             });
