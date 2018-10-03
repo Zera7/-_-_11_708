@@ -8,44 +8,20 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using NetSerializer;
 using System.IO;
-
-
-public enum Test
-{
-    first,
-    second,
-    last
-}
-
+using System.Threading;
+using System.Text.RegularExpressions;
+using CsQuery;
+using AngleSharp;
+using AngleSharp.Parser.Html;
+using AngleSharp.Parser.Css;
 
 namespace Profiling
 {
-    public static class Program
+    internal class ClassA { }
+
+    internal class ClassB
     {
-        static WebClient Client = new WebClient();
-        public static Queue<byte[]> Images { get; set; } = new Queue<byte[]>();
-
-        public static void Main()
-        {
-            var address = "https://www.pinterest.com";
-            Console.WriteLine("Начало подключения");
-            var result = Client.DownloadString(address).Split(new[]{'\"', '\''})
-                .Where(q => q.StartsWith("http") && (q.EndsWith(".jpg") || q.EndsWith(".png") || q.EndsWith(".gif")));
-            Console.WriteLine("Конец подключения");
-            Parallel.ForEach(result, GetImage);
-
-            Console.WriteLine();
-
-            Console.ReadKey();
-        }
-
-        public static void GetImage(string address)
-        {
-            lock (Client)
-            {
-                Console.WriteLine($"Загрузка по адресу {address}");
-                Client.DownloadFile(address, AppDomain.CurrentDomain.BaseDirectory + "/Images/" + address.Split('/').Last());
-            }
-        }
+        public ClassA Method1() { return null; }
+        private ClassB Method2() { return null; }
     }
 }
